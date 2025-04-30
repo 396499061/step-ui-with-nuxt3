@@ -1,0 +1,16 @@
+html, body, #__nuxt, .v-application {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.v-application__wrap {
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.main-content-wrapper {
+  height: 100%;
+  overflow: auto;
+}

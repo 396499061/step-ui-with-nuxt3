@@ -15,6 +15,9 @@ const step = ref(1)
 // 步骤组件映射
 const steps = shallowRef([Step1, Step2, Step3, Step4, Step5, Step6])
 
+// 存储CSV的headers
+const csvHeaders = ref([])
+
 // 下一步
 const nextStep = () => {
   if (step.value < 6) step.value++
@@ -27,6 +30,10 @@ const prevStep = () => {
 
 const stepLabels = ['Step 1', 'Step 2', 'Step 3', 'Step 4', 'Step 5', 'Step 6']
 
+// 处理headers更新
+const handleHeadersUpdated = (headers) => {
+  csvHeaders.value = headers
+}
 </script>
 
 <template>
@@ -72,7 +79,20 @@ const stepLabels = ['Step 1', 'Step 2', 'Step 3', 'Step 4', 'Step 5', 'Step 6']
 
           <!-- 渲染当前步骤的组件 -->
           <div class="step-container">
-            <component :is="steps[step - 1]" />
+            <component 
+              :is="steps[step - 1]" 
+              v-if="step === 1"
+              @headers-updated="handleHeadersUpdated"
+            />
+            <component 
+              :is="steps[step - 1]" 
+              v-else-if="step === 2"
+              :headers="csvHeaders"
+            />
+            <component 
+              :is="steps[step - 1]" 
+              v-else
+            />
           </div>
 
           <!-- 按钮固定到底部 -->

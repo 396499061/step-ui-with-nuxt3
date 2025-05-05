@@ -93,7 +93,7 @@ html, body, #__nuxt, .v-application {
 }
 
 .v-data-table {
-  font-size: 1rem !important;
+  font-size: 1.25rem !important;
 }
 
 .step-circle {
@@ -147,7 +147,6 @@ a:hover {
   color: white !important;
   box-shadow: 0 2px 4px rgba(231, 76, 60, 0.3) !important;
 }
-
 .v-list-item--active .v-list-item__prepend {
   color: white !important;
 }
@@ -267,6 +266,13 @@ a:hover {
   color: var(--text-color) !important;
 }
 
+
+.v-sheet.v-list {
+  background: #1E1E1E !important;
+}
+.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled) {
+  color: black !important;
+}
 // 响应式布局
 @media (max-width: 960px) {
   .v-main {

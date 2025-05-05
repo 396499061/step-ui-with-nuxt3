@@ -61,6 +61,13 @@ const handleDataUpdated = (data) => {
                 }">
                   {{ index + 1 }}
                 </div>
+                <div class="step-label" :class="{
+                  'done': step > index + 1,
+                  'active': step === index + 1,
+                  'pending': step < index + 1
+                }">
+                  {{ label }}
+                </div>
               </div>
 
               <!-- 线条，最后一个不显示 -->
@@ -96,7 +103,7 @@ const handleDataUpdated = (data) => {
 
           <!-- 按钮固定到底部 -->
           <v-row justify="space-between" class="mt-6">
-            <v-btn v-if="step > 1" variant="outlined" color="blue-darken-2" @click="prevStep">
+            <v-btn v-if="step > 1" color="purple-darken-3" variant="elevated" @click="prevStep">
               ← Previous
             </v-btn>
             <v-spacer />
@@ -115,7 +122,7 @@ const handleDataUpdated = (data) => {
   width: 100%;
   max-width: 90vw;
   min-width: 300px;
-  height: 90%;
+  height: 89%;
   overflow-y: auto;
   margin: 0 auto;
 }
@@ -156,20 +163,60 @@ const handleDataUpdated = (data) => {
   line-height: 30px;
   border-radius: 50%;
   background-color: #e0e0e0;
-  color: white;
+  color: white !important;
   font-weight: bold;
+  margin: 0 auto;
+}
+
+.step-label {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: #666;
+  transition: all 0.3s ease;
+}
+
+.step-circle.done,
+.step-label.done {
+  color: white;
+}
+
+.step-circle.active,
+.step-label.active {
+  color: white;
+}
+
+.step-circle.pending,
+.step-label.pending {
+  color: #666;
 }
 
 .step-circle.done {
   background-color: #673ab7;
+  color: white !important;
 }
 
 .step-circle.active {
   background-color: #ff9800;
+  color: white !important;
 }
 
 .step-circle.pending {
   background-color: #bdbdbd;
+  color: white !important;
+}
+
+.step-label.done {
+  color: #673ab7;
+  font-weight: 500;
+}
+
+.step-label.active {
+  color: #ff9800;
+  font-weight: 500;
+}
+
+.step-label.pending {
+  color: #666;
 }
 
 .step-line {

@@ -39,12 +39,7 @@
 
     <div v-else class="data-container">
       <div class="d-flex justify-end mb-4">
-        <v-btn
-          color="primary"
-          variant="outlined"
-          prepend-icon="mdi-upload"
-          @click="resetUpload"
-        >
+        <v-btn variant="outlined" prepend-icon="mdi-upload" @click="resetUpload" style="color: white;">
           Re-upload File
         </v-btn>
       </div>
@@ -54,16 +49,16 @@
         <v-card-text>
           <div class="stats-container">
             <div class="stat-item">
+              <div class="text-h8">Total Rows</div>
               <div class="text-h6">{{ stats.totalRows }}</div>
-              <div class="text-caption">Total Rows</div>
             </div>
             <div class="stat-item">
+              <div class="text-h8">Total Columns</div>
               <div class="text-h6">{{ stats.totalColumns }}</div>
-              <div class="text-caption">Total Columns</div>
             </div>
-            <div class="stat-item headers-item">
-              <div class="text-caption mb-1">Headers:</div>
-              <div class="text-body-2">{{ headers.join(', ') }}</div>
+            <div class="stat-item">
+              <div class="text-h8">Headers</div>
+              <div class="text-h6">{{ headers.join(', ') }}</div>
             </div>
           </div>
         </v-card-text>
@@ -127,7 +122,8 @@ const tableHeaders = computed(() => {
   return parsedData.value[0].map(header => ({
     title: header,
     key: header,
-    sortable: true
+    sortable: false,
+    align: 'center'
   }))
 })
 
@@ -272,5 +268,36 @@ const resetUpload = () => {
   min-height: 0;
   overflow: auto;
 }
+
+/* 表格样式 */
+:deep(.v-data-table .v-data-table-header th) {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+}
+
+:deep(.v-data-table .v-data-table__td) {
+  text-align: center !important;
+}
+
+/* 表格分页选项样式 */
+:deep(.v-data-table-footer__items-per-page .v-list-item),
+:deep(.v-data-table-footer__items-per-page .v-list-item:not(.v-list-item--active)),
+:deep(.v-data-table-footer__items-per-page .v-list-item .v-list-item-title),
+:deep(.v-data-table-footer__items-per-page .v-list-item:not(.v-list-item--active) .v-list-item-title),
+:deep(.v-data-table-footer__items-per-page .v-menu__content .v-list-item),
+:deep(.v-data-table-footer__items-per-page .v-menu__content .v-list-item:not(.v-list-item--active)),
+:deep(.v-data-table-footer__items-per-page .v-menu__content .v-list-item .v-list-item-title),
+:deep(.v-data-table-footer__items-per-page .v-menu__content .v-list-item:not(.v-list-item--active) .v-list-item-title) {
+  color: rgba(0, 0, 0, 0.87) !important;
+  opacity: 1 !important;
+  font-weight: 500 !important;
+}
+
+:deep(.v-data-table-footer__items-per-page .v-field__input) {
+  color: rgba(0, 0, 0, 0.87) !important;
+  opacity: 1 !important;
+}
+
 </style>
   

@@ -61,6 +61,11 @@ const pages = [
 </template>
 
 <style scoped>
+/* 全局字体设置 */
+:deep(*) {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+}
+
 /* 提升菜单项 hover 效果 */
 .hover\:bg-deep-purple-lighten-5:hover {
   background-color: #ede7f6 !important;
@@ -100,6 +105,46 @@ const pages = [
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
 }
 
+/* Banner 标题样式 */
+.content-banner :deep(.v-app-bar-title) {
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* 导航菜单项样式 */
+.nav-drawer :deep(.v-list-item) {
+  font-weight: 500 !important;
+  letter-spacing: 0.3px !important;
+  font-size: 1.4rem !important;
+  padding: 14px 20px !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  transition: all 0.3s ease !important;
+}
+
+.nav-drawer :deep(.v-list-item:hover) {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  transform: translateX(4px) !important;
+}
+
+.nav-drawer :deep(.v-list-item--active) {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+.nav-drawer :deep(.v-list-item__prepend) {
+  font-size: 1.35rem !important;
+  margin-right: 20px !important;
+  color: inherit !important;
+}
+
+.nav-drawer :deep(.v-list-item__title) {
+  font-size: 1.4rem !important;
+  line-height: 1.6 !important;
+  color: inherit !important;
+}
+
 /* 内容容器样式 */
 .content-container {
   margin-top: 48px;
@@ -109,6 +154,7 @@ const pages = [
 
 :deep(.v-btn) {
   background-color: #da0011 !important;
+  font-weight: 500 !important;
 }
 
 :deep(.v-btn--text) {

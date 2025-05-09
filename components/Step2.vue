@@ -43,6 +43,15 @@
             <v-icon end>mdi-arrow-right</v-icon>
           </v-btn>
           <v-btn
+            color="primary"
+            class="mb-2"
+            @click="moveToBoth"
+            :disabled="!selectedItems.length"
+          >
+            Move to Both
+            <v-icon end>mdi-arrow-right</v-icon>
+          </v-btn>
+          <v-btn
             color="secondary"
             @click="moveBackToLeft"
             :disabled="!selectedTopRightItems.length && !selectedBottomRightItems.length"
@@ -325,6 +334,13 @@ const moveToTopRight = () => {
 }
 
 const moveToBottomRight = () => {
+  bottomRightItems.value = [...new Set([...bottomRightItems.value, ...selectedItems.value])]
+  availableHeaders.value = availableHeaders.value.filter(item => !selectedItems.value.includes(item))
+  selectedItems.value = []
+}
+
+const moveToBoth = () => {
+  topRightItems.value = [...new Set([...topRightItems.value, ...selectedItems.value])]
   bottomRightItems.value = [...new Set([...bottomRightItems.value, ...selectedItems.value])]
   availableHeaders.value = availableHeaders.value.filter(item => !selectedItems.value.includes(item))
   selectedItems.value = []
